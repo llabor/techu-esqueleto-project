@@ -31,6 +31,20 @@ app.get('/movimientos', function(req, res) {
     });
 });
 
+app.get('/clientes', function(req, res) {
+  //res.sendFile(path.join(__dirname, 'index.html'));
+    clienteMlab.get('&f={"idcliente":1, "nombre": 1, "apellidos": 1}', function(err, resM, body) {
+      if(err)
+      {
+        console.log(body);
+      }
+      else
+      {
+        res.send(body);
+      }
+    });
+});
+
 app.post('/movimientos', function(req, res) {
   /* Crear movimiento en MLab */
 
